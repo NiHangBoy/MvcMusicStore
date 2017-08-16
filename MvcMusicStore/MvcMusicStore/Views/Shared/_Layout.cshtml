@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="header">
+        <h1>
+            <a href="/">ASP.NET MVC MUSIC STORE</a>
+        </h1>
+        <ul id="navlist">
+            <li class="first"><a href="@Url.Content("~")" id="current">Home</a></li>
+            <li><a href="@Url.Content("~/Store/")">Store</a></li>
+            <li>@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+            <li><a href="@Url.Content("~/StoreManager")">Manager</a></li>
+            <li>@Html.Partial("_LoginPartial")</li>
+        </ul>
+    </div>
+    @{Html.RenderAction("GenreMenu", "Store");}
+
+    <div id="main">
+        @RenderBody()
+    </div>
+
+    <div id="footer">
+        <P>
+            built with <a href="http://asp.net/mvc">ASP.NET MVC 5.</a>
+            &copy; 2017- @DateTime.Now.Year. All Rights Reserved. - MVC Music Store
+            <a href="http://www.miitbeian.gov.cn/">苏ICP备17032927号</a>
+        </P>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
